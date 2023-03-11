@@ -124,7 +124,7 @@ const loginUser = async (req, res) => {
     } else {
       res.status(401).json({
         succeeded: false,
-        error: 'Paswords are not matched',
+        error: 'Şifre yanlış',
       });
     }
   } catch (error) {
