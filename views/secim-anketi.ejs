@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- mobile metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<!-- site metas -->
+	<title>Anketler.info - Seçim anketi</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- bootstrap css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<!-- style css -->
+	<link rel="stylesheet" href="/css/style.css">
+	<!-- Responsive-->
+	<link rel="stylesheet" href="/css/responsive.css">
+	<!-- fevicon -->
+	<link rel="icon" href="images/fevicon.png" type="image/gif" />
+	<!-- Tweaks for older IEs-->
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+	<style>
+		.card-title,
+		.card-text,
+		.btn {
+			text-align: center;
+		}
+
+		.card-deck .card {
+			border: none;
+		}
+
+		.ml-3,
+		.mx-3 {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+	</style>
+</head>
+<!-- body -->
+
+<body class="main-layout inner_page">
+	<!-- loader  -->
+	<div class="loader_bg">
+		<div class="loader"><img src="images/loading.gif" alt="#" /></div>
+	</div>
+	<!-- end loader -->
+
+	<!-- header -->
+	<%- include("partials/_menu") %>
+		<!-- end header inner -->
+		<!-- about -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 bg-light">
+					<div class="sidebar-left" id="sidebar-left">
+					  <!-- add content to your left sidebar here -->
+					  <a href="/">
+					  <img src="/images/vertical-banner.jpg" alt="Vertical Ad Banner" >
+					</a>
+					</div>
+				  </div>
+
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="card-deck mt-5 ml-3 mr-3">
+								<div class="card">
+									<img class="card-img-top" src="/images/rte.jpg" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+									<h6 class="card-title" style="margin-top:10px;"><b>R.T. Erdoğan</b>
+										<p class="card-text" style="margin-top:5px;"><small class="text-muted">AK
+												Parti</small></p>
+									</h6>
+									<% if (!voted) { %>
+										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+											class="btn btn-success"
+											href="/candidates/63f90703ece20a44d441cbda/followcandidate?_method=PUT">oy
+											ver</a>
+										<% } else { %>
+											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
+												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+											<% } %>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="/images/mince.jpg" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+									<h6 class="card-title" style="margin-top:10px;"><b>Muharrem İnce</b>
+										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Memleket
+												Partisi</small></p>
+									</h6>
+									<% if (!voted) { %>
+										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+											class="btn btn-success"
+											href="/candidates/63f9093dece20a44d441cbdb/followcandidate?_method=PUT">oy
+											ver</a>
+										<% } else { %>
+											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
+												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+											<% } %>
+								</div>
+							</div>
+							</div>
+							<div class="col-md-6">
+								<div class="card-deck mt-5 ml-3 mr-3">
+									<div class="card">
+										<img class="card-img-top" src="/images/kkilicdaroglu.jpg" alt="Card image cap"
+											style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+										<h6 class="card-title" style="margin-top:10px;"><b>Kemal Kılıçdaroğlu</b>
+											<p class="card-text" style="margin-top:5px;"><small
+													class="text-muted">CHP</small></p>
+										</h6>
+										<% if (!voted) { %>
+											<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+												class="btn btn-success"
+												href="/candidates/63f90d00ece20a44d441cbdc/followcandidate?_method=PUT">oy
+												ver</a>
+											<% } else { %>
+												<a style="max-width: 77%; margin-right: auto; margin-left: auto;" class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+													<% } %>
+												</div>
+								
+								<div class="card">
+									<img class="card-img-top" src="/images/maksener.jpg" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+									<h6 class="card-title" style="margin-top:10px;"><b>Meral Akşener</b>
+										<p class="card-text" style="margin-top:5px;"><small class="text-muted">İyi
+												Parti</small></p>
+									</h6>
+									<% if (!voted) { %>
+										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+											class="btn btn-success"
+											href="/candidates/63f90edbece20a44d441cbdd/followcandidate?_method=PUT">oy
+											ver</a>
+										<% } else { %>
+											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
+												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+											<% } %>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="card-deck mt-5 ml-3 mr-3">
+								<div class="card">
+									<img class="card-img-top" src="/images/myavas.jpg" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+									<h6 class="card-title" style="margin-top:10px;"><b>Mansur Yavaş</b>
+										<p class="card-text" style="margin-top:5px;"><small
+												class="text-muted">CHP</small></p>
+									</h6>
+									<% if (!voted) { %>
+										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+											class="btn btn-success"
+											href="/candidates/63f90f7eece20a44d441cbde/followcandidate?_method=PUT">oy
+											ver</a>
+										<% } else { %>
+											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
+												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+											<% } %>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="/images/eimamoglu.jpg" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+									<h6 class="card-title" style="margin-top:10px;"><b>Ekrem İmamoğlu</b>
+										<p class="card-text" style="margin-top:5px;"><small
+												class="text-muted">CHP</small></p>
+									</h6>
+									<% if (!voted) { %>
+										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+											class="btn btn-success"
+											href="/candidates/63f90fecece20a44d441cbdf/followcandidate?_method=PUT">oy
+											ver</a>
+										<% } else { %>
+											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
+												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+											<% } %>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card-deck mt-5 ml-3 mr-3">
+								<div class="card">
+									<img class="card-img-top" src="/images/uozdag.jpg" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+									<h6 class="card-title" style="margin-top:10px;"><b>Ümit Özdağ</b>
+										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Zafer
+												Partisi</small></p>
+									</h6>
+									<% if (!voted) { %>
+										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+											class="btn btn-success"
+											href="/candidates/63f9125eece20a44d441cbe0/followcandidate?_method=PUT">oy
+											ver</a>
+										<% } else { %>
+											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
+												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+											<% } %>
+								</div>
+								<div class="card">
+									<img class="card-img-top" src="/images/ferbakan.jpg" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+									<h6 class="card-title" style="margin-top:10px;"><b>Fatih Erbakan</b>
+										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Yeniden
+												Refah Partisi</small></p>
+									</h6>
+									<% if (!voted) { %>
+										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
+											class="btn btn-success"
+											href="/candidates/63f913a0ece20a44d441cbe1/followcandidate?_method=PUT">oy
+											ver</a>
+										<% } else { %>
+											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
+												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
+											<% } %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 bg-light">
+					<div class="sidebar-right" id="sidebar-right">
+					  <!-- add content to your right sidebar here -->
+					  <a href="/illere-gore-sonuclar">
+					  <img src="/images/iller-sonuc.jpg" alt="Vertical Ad Banner">
+					</a>
+					</div>
+				  </div>
+		</div>
+		</div>
+		<!-- end about -->
+		<!-- end footer -->
+		<%- include("partials/_footer") %>

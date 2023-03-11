@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- mobile metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<!-- site metas -->
+	<title>Anketler.info - <%= poll.pollquestion %></title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- bootstrap css -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<!-- style css -->
+	<link rel="stylesheet" href="/css/style.css">
+	<!-- Responsive-->
+	<link rel="stylesheet" href="/css/responsive.css">
+	<!-- fevicon -->
+	<link rel="icon" href="/images/fevicon.png" type="image/gif" />
+	<!-- Tweaks for older IEs-->
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+	<style>
+		@media (max-width: 768px) {
+  .sidebar-left img {
+    display: none !important;
+  }
+  .sidebar-right img {
+    display: none !important;
+  }
+}
+		.card-title,
+		.card-text,
+		.btn {
+			text-align: center;
+		}
+
+		.ml-3,
+		.mx-3 {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+      .my-list > li {
+   
+    list-style: decimal;
+}
+.card-img-top{
+border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+#resultsplace {
+  display: none;
+}
+	</style>
+</head>
+<!-- body -->
+
+<body class="main-layout inner_page">
+	<!-- loader  -->
+	<div class="loader_bg">
+		<div class="loader"><img src="/images/loading.gif" alt="#" /></div>
+	</div>
+	<!-- end loader -->
+
+	<!-- header -->
+	<%- include("partials/_menu") %>
+		<!-- end header inner -->
+		<!-- about -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2">
+					<div class="sidebar-left">
+					  <!-- add content to your left sidebar here -->
+					  <img src="/images/vertical-banner.jpg" alt="Vertical Ad Banner" >
+					</div>
+				  </div>
+				<div class="col-md-8" style="margin-top: 10px;">
+          <h2 align="center"><%= poll.pollquestion %> - <u>Anket</u></h2>
+					<div class="row">
+
+
+             <% poll.options.forEach(function(option) { %>
+							<div class="card-deck mt-5 ml-3 mr-3">
+								<div class="card">
+                  <% if (option.picture) { %>
+									<img class="card-img-top" src="<%= option.picture %>" alt="Card image cap"
+										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
+                      <% } %>
+									<h6 class="card-title" style="margin-top:10px;">
+                    <input type="radio" class="radio-option" name="optiontitle" value="<%= option.title %>" <%= option.title === poll.options[1].title ? 'checked' : '' %>>
+                    <b><%= option.title %></b></h6>
+								</div>
+						</div>
+             <% }); %>
+					</div>
+
+          <% if (user) { %>
+            <div class="row justify-content-center" style="margin-top: 20px;">
+              <div class="col-sm-1.5 text-center">
+                <button type="submit" class="btn btn-success" id="submitButton">oy kullan</button>
+              </div>
+              <div class="col-sm-1 text-center">
+                <span class="or-text">veya</span>
+              </div>
+              <div class="col-sm-1.5 text-center">
+                <button type="button" class="btn btn-danger" id="showresults">sonuçları gör</button>
+              </div>
+            </div>
+            <% } else { %>
+              <div class="row justify-content-center" style="margin-top: 20px;">
+                <div class="col-sm-1.5 text-center">
+                  <a href="/register" class="btn btn-success">oy kullan</a>
+                </div>
+                <div class="col-sm-1 text-center">
+                  <span class="or-text">veya</span>
+                </div>
+                <div class="col-sm-1.5 text-center">
+                  <a href="/register" class="btn btn-danger">sonuçları gör</a>
+                </div>
+              </div>
+              <% } %>
+        
+
+          <div class="col-md-12" id="resultsplace" style="margin-top: 40px;">
+            <h2 align="center"><u>Sonuçlar</u> : <%= pollquestion %></h2>
+            <% let totalVotes = 0; %>
+            <% results.forEach(function(result) { %>
+              <% totalVotes += result.votes; %>
+            <% }); %>
+            <ol class="my-list">
+              <% results.forEach(result => { %>
+                <% let votePercentage = (result.votes * 100) / totalVotes; %>
+                <li>
+                  <h4><%= result.title %></h4>
+                  <div class="chart" style="width: <%= votePercentage.toFixed(1) %>%;">
+                    <%= votePercentage.toFixed(1) %>%</div>
+                </li>
+              <% }); %>
+            </ol>
+            <p>Toplam oy sayısı : <%= totalVotes %></p>
+           </div>
+
+				</div>
+				<div class="col-md-2">
+					<div class="sidebar-right">
+					  <!-- add content to your right sidebar here -->
+					  <img src="/images/vertical-banner.jpg" alt="Vertical Ad Banner">
+					</a>
+					</div>
+				  </div>
+		</div>
+		</div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const cards = document.querySelectorAll('.card');
+          cards.forEach((card, index) => {
+            if (index === 1) {
+              card.style.borderColor = '#1a8cff'
+            }
+          });
+
+        });
+
+     document.getElementById('showresults').addEventListener('click', function(){
+      document.getElementById('resultsplace').style.display = 'block'
+     });
+    </script>
+    <script>
+
+      // Select all cards with the class "card"
+      const cards = document.querySelectorAll('.card');
+    
+      // Add a click event listener to each card
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          // Get the radio button element within the card
+
+
+          cards.forEach(card => {
+         card.style.borderColor = '#dee2e6'
+          });
+
+
+          const radio = card.querySelector('input[type="radio"]');
+          
+           card.style.borderColor = '#1a8cff';
+          // If the radio button is not already selected, select it
+          if (!radio.checked) {
+            radio.checked = true;
+          
+          }
+        });
+      });
+      
+    </script>
+    <script>
+    const submitButton = document.getElementById('submitButton')
+    submitButton.addEventListener('click', async (event) => {
+      event.preventDefault()
+      var optiontitle;
+      var ele = document.getElementsByName('optiontitle');
+      for(i = 0; i < ele.length; i++) {
+            if(ele[i].checked)
+            var optiontitle = ele[i].value;
+        }
+
+      try {
+  const response = await fetch('/polls/<%= poll.pollname %>/vote', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ optiontitle })
+  });
+  const data = await response.json();
+
+  if (response.ok) {
+    alert(data.message);
+    document.getElementById('resultsplace').style.display = 'block';
+    // Do something with the updated poll object, e.g. display a message
+  } else {
+    alert(data.message);
+    // Handle error
+  }
+} catch (error) {
+  console.error(error);
+  alert('An error occurred while voting in the poll.');
+}
+    })
+  </script>
+
+		<!-- end about -->
+		<!-- end footer -->
+		<%- include("partials/_footer") %>

@@ -4,8 +4,11 @@ import conn from "./db.js";
 import cookieParser from 'cookie-parser';
 import methodOverride from "method-override";
 import pageRoute from "./routes/pageRoute.js";
-import photoRoute from "./routes/photoRoute.js";
 import userRoute from "./routes/userRoute.js";
+import candidateRoute from "./routes/candidateRoute.js";
+import facebookRoute from "./routes/facebookRoute.js";
+import pollRoute from "./routes/pollRoute.js";
+import session from 'express-session';
 import { checkUser } from "./middlewares/authMiddleware.js";
 import fileUpload from 'express-fileupload';
 import { v2 as cloudinary } from 'cloudinary';
@@ -32,10 +35,20 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false, // Set to true for HTTPS connections
+        maxAge: 600000, // 10 minute
+      },
+}));
 app.use(cookieParser());
 app.use(fileUpload({
     useTempFiles: true,
-    tempFileDir: "/tmp",}));
+    tempFileDir: "/tmp",
+}));
 app.use(methodOverride('_method', {
     methods: ['POST','GET'],
 }));
@@ -43,9 +56,17 @@ app.use(methodOverride('_method', {
 //routes
 app.use('*', checkUser);
 app.use("/", pageRoute);
-app.use("/photos", photoRoute);
 app.use("/users", userRoute);
+app.use("/candidates", candidateRoute);
+app.use("/polls", pollRoute);
+app.use("/auth/facebook/callback", facebookRoute);
 
+// 404 error handling middleware
+app.use((req, res, next) => {
+    res.status(404).render('404.ejs');
+});
+
+//server listening
 app.listen(port, ()=> {
     console.log(`App running on port : ${port}`)
 });
