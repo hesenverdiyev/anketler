@@ -120,7 +120,10 @@ const loginUser = async (req, res) => {
         maxAge: 1000 * 60 * 60 * 720,
       });
 
-      res.redirect('/');
+      res.json({
+        succeeded: true,
+        message: 'Login successful'
+      });
     } else {
       res.status(401).json({
         succeeded: false,
@@ -134,6 +137,7 @@ const loginUser = async (req, res) => {
     });
   }
 };
+
 
 export const createToken = (userId) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '30d' });
