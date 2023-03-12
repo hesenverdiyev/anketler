@@ -87,6 +87,25 @@
           </div>
         </div>
         <script>
+          const form = document.getElementById('request');
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/users/login', {
+              method: 'POST',
+              body: formData
+            });
+            const data = await response.json();
+            if (data.succeeded) {
+              // Redirect to the home page
+              window.location.href = '/';
+            } else {
+              alert(data.error);
+            }
+          });
+        </script>
+        
+        <script>
           const facebookLoginButton = document.getElementById('facebook-login');
           facebookLoginButton.addEventListener('click', () => {
             window.location.href = 'https://www.facebook.com/v13.0/dialog/oauth?client_id=541304127981741&redirect_uri=http://localhost:3000/auth/facebook/callback&scope=email,user_location,user_hometown';
