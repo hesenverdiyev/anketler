@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.route("/").get(pageController.getIndexPage);
 router.route("/about").get(pageController.getAboutPage);
+router.route("/privacy-policy").get(pageController.getPrivacyPolicyPage);
+router.route("/terms-of-service").get(pageController.getTermsOfServicePage);
 // router.route("/secim-anketi").get(authMiddleware.authenticateToken, pageController.getSecimAnketiPage);
 router.route("/anket-sonuclari").get(authMiddleware.authenticateToken, pageController.getAnketSonuclariPage);
 router.route("/illere-gore-sonuclar").get(authMiddleware.authenticateToken, pageController.getIllereGoreSonuclarPage);

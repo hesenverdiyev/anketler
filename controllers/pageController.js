@@ -26,6 +26,18 @@ const getAboutPage = (req, res) => {
   });
 };
 
+const getPrivacyPolicyPage = (req, res) => {
+  res.render('privacy-policy', {
+    link: 'privacy-policy',
+  });
+};
+
+const getTermsOfServicePage = (req, res) => {
+  res.render('terms-of-service', {
+    link: 'terms-of-service',
+  });
+};
+
 
 
 // const getSecimAnketiPage = async (req, res) => {
@@ -285,4 +297,6 @@ export {
   getAnketSonuclariPage,
   getIllereGoreSonuclarPage,
   getIlAnketSonucuPage,
+  getPrivacyPolicyPage,
+  getTermsOfServicePage
 };
