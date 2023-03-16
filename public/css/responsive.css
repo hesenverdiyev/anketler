@@ -195,6 +195,7 @@ ul.menu_footer li a {
     }
     .site-navbar ul li a {
     padding: 14px 25px 10px 25px;
+    background-color: #fcfcfc;
 }
     .site-navbar ul.open {
         max-height: 100vh;
@@ -319,6 +320,7 @@ ul.menu_footer li a {
     }
     .site-navbar ul li a {
     padding: 14px 25px 10px 25px;
+    background-color: #fcfcfc;
 }
     .site-navbar ul.open {
         max-height: 100vh;
