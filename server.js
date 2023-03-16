@@ -59,7 +59,7 @@ app.use("/", pageRoute);
 app.use("/users", userRoute);
 app.use("/candidates", candidateRoute);
 app.use("/polls", pollRoute);
-app.use("/auth/facebook/callback", facebookRoute);
+app.use("/srv/service/social/Facebook/callback/", facebookRoute);
 
 // 404 error handling middleware
 app.use((req, res, next) => {
