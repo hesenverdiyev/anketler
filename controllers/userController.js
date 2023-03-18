@@ -55,14 +55,14 @@ const UserFromFacebook = async (req, res) => {
       code: code,
     });
     const accessToken = accessTokenResponse.data.access_token;
-    const profileResponse = await axios.get(`https://graph.facebook.com/v13.0/me?fields=email&access_token=${accessToken}`);
+    const profileResponse = await axios.get(`https://graph.facebook.com/v13.0/me?fields=email,location,hometown&access_token=${accessToken}`);
     
-    let cityfrom = 'istanbul';
-    // if (profileResponse.data.location && profileResponse.data.location.name) {
-    //   cityfrom = profileResponse.data.location.name.toLowerCase();
-    // } else if (profileResponse.data.hometown && profileResponse.data.hometown.name) {
-    //   cityfrom = profileResponse.data.hometown.name.toLowerCase();
-    // }
+    let cityfrom = 'belirtilmemis';
+    if (profileResponse.data.location && profileResponse.data.location.name) {
+      cityfrom = profileResponse.data.location.name.toLowerCase();
+    } else if (profileResponse.data.hometown && profileResponse.data.hometown.name) {
+      cityfrom = profileResponse.data.hometown.name.toLowerCase();
+    }
     const email = profileResponse.data.email;
     const password = profileResponse.data.id;
 
