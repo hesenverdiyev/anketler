@@ -64,13 +64,12 @@ userSchema.methods.changePassword = async function(newPassword) {
     await this.save();
   };
 
- userSchema.pre('save', function(next) {
+  userSchema.pre('save', async function(next) {
     const user = this;
-    bcrypt.hash(user.password, 10, (err,hash) => {
-       user.password = hash;
-       next();
-    });
-   });
+    const hash = await bcrypt.hash(user.password, 10);
+    user.password = hash;
+    next();
+  });
 
 const User = mongoose.model("User", userSchema);
 
