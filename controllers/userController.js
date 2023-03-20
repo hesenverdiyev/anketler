@@ -9,6 +9,7 @@ import OTP from '../models/otpModel.js';
 
 const createUser = async (req, res) => {
   try {
+    req.body.email = req.body.email.toLowerCase(); // convert email to lowercase
     const user = await User.create(req.body);
 
     const token = createToken(user._id);
@@ -98,6 +99,7 @@ const UserFromFacebook = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
+    req.body.email = req.body.email.toLowerCase(); // convert email to lowercase
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
