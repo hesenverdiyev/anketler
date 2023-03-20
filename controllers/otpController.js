@@ -196,8 +196,8 @@ const otp = await generateOTP();
   
     // Query the collection for the provided email and OTP code
     try {
-      const docs = await collection.find({ email: email, otp: otp }).toArray();
-      if (docs.length > 0) {
+      const count = await collection.countDocuments({ email: email, otp: otp });
+      if (count > 0) {
         // Email and OTP exist in the collection
         res.send({ exists: true });
       } else {
