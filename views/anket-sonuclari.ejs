@@ -75,7 +75,7 @@
 			<% for (let i = 0; i < candidates.length; i++) { %>
 				<% let votePercentage = (candidates[i].followers.length / totalVotes) * 100; %>
 				<li><%= candidates[i].fullname %> (<%= candidates[i].followers.length %> oy)
-					<div class="chart" style="width: <%= (votePercentage + 10).toFixed(1) %>%;">
+					<div class="chart" style="width: <%= (votePercentage + 7).toFixed(1) %>%;">
 						<%= votePercentage.toFixed(1) %>%</div>
 				</li>
 			<% } %>
