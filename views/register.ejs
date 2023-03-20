@@ -329,11 +329,6 @@
   clearTimeout(type_timer);
   type_timer = setTimeout(finished_typing, finished_writing_interval);
 });
-
-otpinputarea.addEventListener('paste', function () {
-  clearTimeout(type_timer);
-  finished_typing();
-});
    
    //Clear timeout on key down event
    otpinputarea.addEventListener('keydown', function () {
@@ -346,6 +341,9 @@ otpinputarea.addEventListener('paste', function () {
       
    }
    
+   otpinputarea.addEventListener('paste', function () {
+      otpverification();
+});
    
    async function otpverification() {
        
