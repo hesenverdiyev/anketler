@@ -182,7 +182,7 @@ select {
   <% for (let i = 0; i < candidatesWithVotes.length; i++) { %>
     <% let votePercentage = (candidatesWithVotes[i].votes / totalVotes) * 100; %>
     <li><%= candidatesWithVotes[i].fullname %> (<%= candidatesWithVotes[i].votes %> oy)
-      <div class="chart" style="width: <%= votePercentage.toFixed(1) %>%;">
+      <div class="chart" style="width: <%= (votePercentage + 7).toFixed(1) %>%;">
         <%= votePercentage.toFixed(1) %>%</div>
     </li>
   <% } %>

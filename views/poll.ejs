@@ -147,7 +147,7 @@ border-bottom: 1px solid rgba(0,0,0,.125);
                 <% let votePercentage = (result.votes * 100) / totalVotes; %>
                 <li>
                   <h4><%= result.title %></h4>
-                  <div class="chart" style="width: <%= votePercentage.toFixed(1) %>%;">
+                  <div class="chart" style="width: <%= (votePercentage + 7).toFixed(1) %>%;">
                     <%= votePercentage.toFixed(1) %>%</div>
                 </li>
               <% }); %>
