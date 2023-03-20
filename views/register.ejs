@@ -336,14 +336,14 @@
    });
    
    //This function runs when user has finished writing in input
-   function finished_typing () {
-       otpverification();
+  async function finished_typing () {
+      await otpverification();
       
    }
    
-   otpinputarea.addEventListener('paste', function () {
-      otpverification();
-});
+   otpinputarea.addEventListener('paste', async function () {
+   await otpverification();
+   });
    
    async function otpverification() {
        
