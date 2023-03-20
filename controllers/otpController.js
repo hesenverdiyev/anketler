@@ -188,30 +188,26 @@ const otp = await generateOTP();
   };
 
   const otpVerify = async (req, res) => {
-
-
     const collection = mongoose.connection.collection('otps');
-
+  
     // Get the email and OTP from the request query parameters
     let email = req.body.email;
     let otp = req.body.otp;
-
+  
     // Query the collection for the provided email and OTP code
-   await collection.find({ email: email, otp: otp }).toArray()
-      .then((docs) => {
-        if (docs.length > 0) {
-          // Email and OTP exist in the collection
-          res.send({ exists: true });
-        } else {
-          // Email and OTP do not exist in the collection
-          res.send({ exists: false });
-        }
-      })
-      .catch((err) => {
-        console.log('Error querying the collection:', err);
+    try {
+      const docs = await collection.find({ email: email, otp: otp }).toArray();
+      if (docs.length > 0) {
+        // Email and OTP exist in the collection
+        res.send({ exists: true });
+      } else {
+        // Email and OTP do not exist in the collection
         res.send({ exists: false });
-      });
-
+      }
+    } catch (err) {
+      console.log('Error querying the collection:', err);
+      res.send({ exists: false });
+    }
   };
 
   export {
