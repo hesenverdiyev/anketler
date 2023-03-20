@@ -191,7 +191,7 @@
                         </div>
                         <div class="input-group mb-3" style="padding-left: 15px; width: 50%; display: none;" id="otpprocessplace">
                            <input type="text" name="otp" class="form-control"
-                              placeholder="Doğrulama kodu" aria-describedby="button-addon3">
+                              placeholder="Doğrulama kodu" aria-describedby="button-addon3" onpaste="otpverification()">
                            <div class="input-group-append">
                               <button class="btn btn-outline-secondary" id="button-addon3" style="display: none;"></button>
                            </div>
@@ -336,14 +336,11 @@
    });
    
    //This function runs when user has finished writing in input
-  async function finished_typing () {
-      await otpverification();
+ function finished_typing () {
+      otpverification();
       
    }
    
-   otpinputarea.addEventListener('paste', async function () {
-   await otpverification();
-   });
    
    async function otpverification() {
        
