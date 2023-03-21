@@ -876,7 +876,6 @@ ul.social_icon li a i:hover {
 .footer {
     background: #fff;
     text-align: center;
-    flex-shrink: 0;
 }
 
 ul.menu_footer {
@@ -937,7 +936,7 @@ ul.top_infomation li a i:hover {
 }
 
 .copyright {
-    margin-top: 70px;
+    margin-top: 90px;
     background: #252525;
         padding-top: 25px;
  padding-bottom: 25px;
