@@ -191,7 +191,7 @@
                         </div>
                         <div class="input-group mb-3" style="padding-left: 15px; width: 50%; display: none;" id="otpprocessplace">
                            <input type="text" name="otp" class="form-control"
-                              placeholder="Doğrulama kodu" aria-describedby="button-addon3" onpaste="otpverification()">
+                              placeholder="Doğrulama kodu" aria-describedby="button-addon3">
                            <div class="input-group-append">
                               <button class="btn btn-outline-secondary" id="button-addon3" style="display: none;"></button>
                            </div>
@@ -345,7 +345,7 @@
    async function otpverification() {
        
        const email = form.email.value;
-       const otp = form.otp.value;
+       let otp = form.otp.value;
    
       
           const res = await fetch('/users/otpverify', {
@@ -382,6 +382,51 @@
    
     };
    </script>
+
+<script>
+otpinputarea.addEventListener('paste', async (event) => {
+   const email = form.email.value;
+       let otp = event.clipboardData.getData('text');
+   
+      
+          const res = await fetch('/users/otpverify', {
+             method: "POST",
+             body: JSON.stringify({ email,otp }),
+             headers: { "Content-Type": "application/json" }
+          })
+   
+          const data = await res.json();
+   
+          console.log("DATA2", data)
+   
+          if (data.exists) {
+           otpmessage.style.display = 'inline-block';
+           otpinputarea.style.borderColor = "green";
+           otpmessage.style.backgroundColor = "green";
+           otpmessage.textContent = "doğru"
+           if (citySelect.value !== '') {
+           submitbutton.disabled = false;
+           }
+          } else {
+              otpmessage.style.display = 'inline-block';
+              otpmessage.style.backgroundColor = "red";
+              otpmessage.textContent = "yanlış / geçersiz"
+              otpmessage.style.backgroundColor = "red";
+              setTimeout(function(){
+               otpinputarea.style.borderColor = "#AA575B";
+               otpmessage.style.display = 'none';
+   
+               
+              },2000)
+          }
+
+
+})
+
+</script>
+
+
+
       <script>
          citySelect.addEventListener('change', function(){
             if(otpmessage.textContent === "doğru"){
