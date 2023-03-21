@@ -170,6 +170,7 @@ ul.menu_footer li a {
         position: absolute;
         right: 15px;
         z-index: 99999;
+        margin-top: -20px;
     }
     .site-navbar {
     min-height: 104px;
@@ -178,7 +179,7 @@ ul.menu_footer li a {
         position: absolute;
         width: 100%;
         left: 0px;
-        top: 61px;
+        top: 40px;
         flex-direction: column;
         align-items: center;
         background-color: #fff;
@@ -220,7 +221,7 @@ padding-bottom: 30px;}
     display: none;
     }
      .header-area {
-        padding: 23px 10px;
+        padding: 25px 10px;
     }
     .bt_fe::before {
     height: 56%;
