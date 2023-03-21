@@ -1019,6 +1019,12 @@ ul.social_icon_bottom li a i:hover {
   }
 }
 
+@media (max-width: 576px) {
+    .logo img {
+      max-width: 50%;
+    }
+  }
+
 @media (max-width: 768px) {
     #sidebar-left img {
       display: none !important;
