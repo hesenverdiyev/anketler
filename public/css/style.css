@@ -876,6 +876,7 @@ ul.social_icon li a i:hover {
 .footer {
     background: #fff;
     text-align: center;
+    position: relative;
 }
 
 ul.menu_footer {
