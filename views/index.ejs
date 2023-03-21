@@ -270,6 +270,16 @@
                <div class="col-md-12" style="text-align: center;">
                   <h2 id="gerisayim" style="color: #9c0100; margin-top: 35px;"></h2>
                </div>
+			   
+			   <div class="col-md-12" style="text-align: center;" id="iller-banner">
+				<% if (!user) { %>
+					<a href="/register">
+					  <% } else { %>
+						  <a href="/illere-gore-sonuclar">
+						  <% } %>
+					<img src="/images/illere-gore-secim-anketi-sonucu-top.jpg" alt="iller banner" style="margin-top: 50px;">
+				  </a>
+			</div>
 
 			   <div class="col-md-12" style="background-color: #f2f2f2; padding: 10px; text-align: center; margin-top: 60px; margin-left: auto; margin-right: auto;">
           <h1><strong><em style="color: #424242;">Diğer anketler</em></strong></h1>
@@ -295,8 +305,8 @@
         </div>
 
 		<div class="col-md-12" style="text-align: center;">
-			<a href="/" >
-				<img src="/images/banner1.jpg" alt="Top Banner" style="margin-top: 50px;">
+			<a href="https://www.youtube.com/watch?v=hw1BBtUkdzA" >
+				<img src="/images/banner1.gif" alt="Top Banner" style="margin-top: 50px;">
 			  </a>
 		</div>
 
@@ -309,7 +319,7 @@
 						<% } else { %>
 							<a href="/illere-gore-sonuclar">
 							<% } %>
-					  <img src="/images/iller-sonuc.jpg" alt="Vertical Banner">
+					  <img src="/images/illere-gore-secim-anketi-sonucu.jpg" alt="Vertical Banner">
 					</a>
 					</div>
 				  </div>
