@@ -2,16 +2,19 @@
     File Name: custom.js
 ---------------------------------------------------------------------*/
 
-  const loader = document.querySelector('.loader');
-
-  document.addEventListener("load", function(){
-  loader.style.display = "none";
-});
-
 $(function () {
 
   "use strict";
 
+  /* Preloader
+  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+  $(document).ready(function() {
+    setTimeout(function() {
+      $('.loader_bg').fadeOut();
+    }, 1500);
+  });
+  
 
   /* Tooltip
   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
