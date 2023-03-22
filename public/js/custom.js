@@ -9,12 +9,9 @@ $(function () {
   /* Preloader
   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
-  $(document).ready(function() {
-    setTimeout(function() {
-      $('.loader_bg').fadeOut();
-    }, 1500);
-  });
-  
+  setTimeout(function () {
+    $('.loader_bg').fadeToggle();
+  }, 1500);
 
   /* Tooltip
   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
