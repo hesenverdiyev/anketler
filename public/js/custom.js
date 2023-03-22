@@ -2,8 +2,8 @@
     File Name: custom.js
 ---------------------------------------------------------------------*/
 setTimeout(function() {
-  var loaderBg = document.querySelector('.loader_bg');
-  loaderBg.classList.add('hidden');
+  const loaderBg = document.querySelector('.loader_bg');
+  loaderBg.style.display = "none";
 }, 1500);
 
 $(function () {
