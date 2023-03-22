@@ -8,9 +8,6 @@ const conn = async () =>{
             dbName: "anketler",
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            autoReconnect: true,
-            reconnectTries: 3,
-            reconnectInterval: 5000,
         });
         console.log("Connected to the DB successfully");
     } catch (error) {
