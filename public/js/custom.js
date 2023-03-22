@@ -1,10 +1,12 @@
 /*---------------------------------------------------------------------
     File Name: custom.js
 ---------------------------------------------------------------------*/
-setTimeout(function() {
-  const loaderBg = document.querySelector('.loader_bg');
-  loaderBg.style.display = "none";
-}, 1500);
+
+  const loader = document.querySelector('.loader');
+
+  document.addEventListener("load", function(){
+  loader.style.display = "none";
+});
 
 $(function () {
 
