@@ -1,19 +1,15 @@
 /*---------------------------------------------------------------------
     File Name: custom.js
 ---------------------------------------------------------------------*/
+setTimeout(function() {
+  var loaderBg = document.querySelector('.loader_bg');
+  loaderBg.classList.add('hidden');
+}, 1500);
 
 $(function () {
 
   "use strict";
 
-  /* Preloader
-  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-
-
-setTimeout(function() {
-  var loaderBg = document.querySelector('.loader_bg');
-  loaderBg.classList.add('hidden');
-}, 1500);
 
   /* Tooltip
   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
