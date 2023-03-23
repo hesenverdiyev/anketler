@@ -44,6 +44,16 @@ app.use(session({
         maxAge: 600000, // 10 minute
       },
 }));
+
+// HTTP to HTTPS redirect middleware
+app.use((req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        res.redirect(`https://${req.hostname}${req.url}`);
+    } else {
+        next();
+    }
+});
+
 app.use(cookieParser());
 app.use(fileUpload({
     useTempFiles: true,
