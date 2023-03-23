@@ -53,6 +53,7 @@ app.use(methodOverride('_method', {
     methods: ['POST','GET'],
 }));
 
+
 //routes
 app.use('*', checkUser);
 app.use("/", pageRoute);

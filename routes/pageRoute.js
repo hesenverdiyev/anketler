@@ -5,6 +5,7 @@ import * as authMiddleware from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.route("/").get(pageController.getIndexPage);
+router.route("/sitemap.xml").get(pageController.getSiteMapPage);
 router.route("/about").get(pageController.getAboutPage);
 router.route("/privacy-policy").get(pageController.getPrivacyPolicyPage);
 router.route("/terms-of-service").get(pageController.getTermsOfServicePage);

@@ -19,6 +19,9 @@ const getIndexPage = async (req, res) => {
   });
 };
 
+const getSiteMapPage = (req, res) => {
+  res.sendFile('sitemap.xml', { root: '.' })
+};
 
 const getAboutPage = (req, res) => {
   res.render('about', {
@@ -298,5 +301,6 @@ export {
   getIllereGoreSonuclarPage,
   getIlAnketSonucuPage,
   getPrivacyPolicyPage,
-  getTermsOfServicePage
+  getTermsOfServicePage,
+  getSiteMapPage
 };
