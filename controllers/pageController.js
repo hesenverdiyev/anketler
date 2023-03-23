@@ -20,7 +20,7 @@ const getIndexPage = async (req, res) => {
 };
 
 const getSiteMapPage = (req, res) => {
-  res.sendFile('sitemap.xml', { root: '.' })
+  res.sendFile('/src/views/sitemap.xml', { root: '.' })
 };
 
 const getAboutPage = (req, res) => {
