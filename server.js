@@ -12,6 +12,7 @@ import session from 'express-session';
 import { checkUser } from "./middlewares/authMiddleware.js";
 import fileUpload from 'express-fileupload';
 import { v2 as cloudinary } from 'cloudinary';
+import enforce from 'express-enforces-ssl';
 
 dotenv.config();
 
@@ -44,16 +45,6 @@ app.use(session({
         maxAge: 600000, // 10 minute
       },
 }));
-
-// redirect HTTP to HTTPS
-app.use(function(req, res, next) {
-    if (!req.secure && req.get('X-Forwarded-Proto') !== 'https') {
-      res.redirect('https://' + req.get('Host') + req.url);
-    } else {
-      next();
-    }
-  });
-
 app.use(cookieParser());
 app.use(fileUpload({
     useTempFiles: true,
@@ -62,6 +53,9 @@ app.use(fileUpload({
 app.use(methodOverride('_method', {
     methods: ['POST','GET'],
 }));
+
+// Redirect HTTP traffic to HTTPS
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 //routes
 app.use('*', checkUser);
