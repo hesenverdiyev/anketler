@@ -45,14 +45,14 @@ app.use(session({
       },
 }));
 
-// HTTP to HTTPS redirect middleware
-app.use((req, res, next) => {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-        res.redirect(`https://${req.hostname}${req.url}`);
+// redirect HTTP to HTTPS
+app.use(function(req, res, next) {
+    if (!req.secure && req.get('X-Forwarded-Proto') !== 'https') {
+      res.redirect('https://' + req.get('Host') + req.url);
     } else {
-        next();
+      next();
     }
-});
+  });
 
 app.use(cookieParser());
 app.use(fileUpload({
@@ -62,7 +62,6 @@ app.use(fileUpload({
 app.use(methodOverride('_method', {
     methods: ['POST','GET'],
 }));
-
 
 //routes
 app.use('*', checkUser);
