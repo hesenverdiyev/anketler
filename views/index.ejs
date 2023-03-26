@@ -217,54 +217,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<div class="card-deck mt-5 ml-3 mr-3">
-								<div class="card">
-									<img class="card-img-top" src="/images/ssavas.jpg" alt="Card image cap"
-										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
-									<h6 class="card-title" style="margin-top:10px;"><b>Serdar Savaş</b>
-										<p class="card-text" style="margin-top:5px;"><small
-												class="text-muted">Bağımsız</small></p>
-									</h6>
-                           <% if (!user) { %>
-                              <a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-success" href="/register">oy ver</a>
-                              <% } else { %>
-									<% if (!voted) { %>
-										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
-											class="btn btn-success"
-											href="/candidates/63f90fecece20a44d441cbdf/followcandidate?_method=PUT">oy
-											ver</a>
-										<% } else { %>
-											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
-											<% } %>
-                                 <% } %>
-								</div>
-								<div class="card">
-									<img class="card-img-top" src="/images/ferbakan.jpg" alt="Card image cap"
-										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
-									<h6 class="card-title" style="margin-top:10px;"><b>Fatih Erbakan</b>
-										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Yeniden
-												Refah Partisi</small></p>
-									</h6>
-                           <% if (!user) { %>
-                              <a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-success" href="/register">oy ver</a>
-                              <% } else { %>
-									<% if (!voted) { %>
-										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
-											class="btn btn-success"
-											href="/candidates/63f913a0ece20a44d441cbe1/followcandidate?_method=PUT">oy
-											ver</a>
-										<% } else { %>
-											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
-											<% } %>
-                                 <% } %>
-								</div>
-							</div>
-						</div>
 					</div>
 
                <div class="col-md-12" style="text-align: center;">
