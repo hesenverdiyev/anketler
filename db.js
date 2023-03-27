@@ -4,8 +4,14 @@ const conn = async () =>{
     try {
         await mongoose.connect(process.env.DB_URI,{
             dbName: "anketler",
+            authSource: "admin",
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            connectTimeoutMS: 5000,
+            socketTimeoutMS: 20000,
+            heartbeatFrequencyMS: 10000,
+            retryWrites: true,
+            w: "majority",
         });
         console.log("Connected to the DB successfully");
     } catch (error) {
