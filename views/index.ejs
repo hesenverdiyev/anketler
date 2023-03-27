@@ -169,56 +169,6 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-md-6">
-							<div class="card-deck mt-5 ml-3 mr-3">
-								<div class="card">
-									<img class="card-img-top" src="/images/dperincek.jpg" alt="Card image cap"
-										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
-									<h6 class="card-title" style="margin-top:10px;"><b>Doğu Perinçek</b>
-										<p class="card-text" style="margin-top:5px;"><small
-												class="text-muted">Vatan Partisi</small></p>
-									</h6>
-                           <% if (!user) { %>
-                              <a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-success" href="/register">oy ver</a>
-                              <% } else { %>
-									<% if (!voted) { %>
-										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
-											class="btn btn-success"
-											href="/candidates/63f90f7eece20a44d441cbde/followcandidate?_method=PUT">oy
-											ver</a>
-										<% } else { %>
-											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
-											<% } %>
-                                 <% } %>
-								</div>
-								<div class="card">
-									<img class="card-img-top" src="/images/aozal.jpg" alt="Card image cap"
-										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
-									<h6 class="card-title" style="margin-top:10px;"><b>Ahmet Özal</b>
-										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Türkiye İttifakı</small></p>
-									</h6>
-                           <% if (!user) { %>
-                              <a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-success" href="/register">oy ver</a>
-                              <% } else { %>
-									<% if (!voted) { %>
-										<a style="max-width: 50%; margin-right: auto; margin-left: auto;"
-											class="btn btn-success"
-											href="/candidates/63f9125eece20a44d441cbe0/followcandidate?_method=PUT">oy
-											ver</a>
-										<% } else { %>
-											<a style="max-width: 77%; margin-right: auto; margin-left: auto;"
-												class="btn btn-danger" href="/anket-sonuclari">sonuçları gör</a>
-											<% } %>
-                                 <% } %>
-								</div>
-							</div>
-						</div>
-					</div>
-
                <div class="col-md-12" style="text-align: center;">
                   <h2 id="gerisayim" style="color: #9c0100; margin-top: 35px;"></h2>
                </div>
