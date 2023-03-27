@@ -3,7 +3,6 @@ import axios from 'axios';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
-import Candidate from '../models/candidateModel.js';
 import OTP from '../models/otpModel.js';
 
 
