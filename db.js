@@ -10,6 +10,7 @@ const conn = async () =>{
             connectTimeoutMS: 5000,
             socketTimeoutMS: 20000,
             heartbeatFrequencyMS: 10000,
+            serverSelectionTimeoutMS: 5000,
             retryWrites: true,
             w: "majority",
         });
