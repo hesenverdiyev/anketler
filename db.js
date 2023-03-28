@@ -16,7 +16,7 @@ const conn = async () =>{
         });
         console.log("Connected to the DB successfully");
     } catch (error) {
-        console.log(`DB connection error:, ${error}`);
+        console.log(`DB connection error: ${error}`);
     }
 };
 
