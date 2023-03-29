@@ -36,7 +36,7 @@ const getAllPolls = async (req, res) => {
       res.render('poll', { polls, poll, pollname, options, pollquestion, _id, results, link: 'poll' });
     } catch (err) {
       console.error(err);
-      res.status(500).send('An error occurred while retrieving poll results');
+      res.status(500).send('Anket sonuçları alınırken bir hata oluştu');
     }
   };
 
