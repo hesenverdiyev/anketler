@@ -19,6 +19,8 @@ const getAllPolls = async (req, res) => {
 
   const getAPoll = async (req, res) => {
     try {
+      const polls = await Poll.find({});
+
       const pollname = req.params.pollname;
       const poll = await Poll.findOne({ pollname: pollname });
       const { _id, pollquestion, options } = poll;
@@ -31,7 +33,7 @@ const getAllPolls = async (req, res) => {
         votes: option.voters.length,
       })).sort((a, b) => b.votes - a.votes);
   
-      res.render('poll', { poll, pollname, options, pollquestion, _id, results, link: 'poll' });
+      res.render('poll', { polls, poll, pollname, options, pollquestion, _id, results, link: 'poll' });
     } catch (err) {
       console.error(err);
       res.status(500).send('An error occurred while retrieving poll results');
