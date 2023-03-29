@@ -14,7 +14,7 @@
   <% poll.options.forEach(function(option) { %>
     <% keywords.push(option.title); %>
     <% }); %>
-  <meta name="keywords" content="<%= poll.pollquestion %>,<%= keywords.join(',') %>">
+  <meta name="keywords" content="<%= poll.pollquestion %>, <%= keywords.join(', ') %>">
 	<meta name="description" content="<%= poll.pollquestion %> - Anket">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://www.anketler.info/">
