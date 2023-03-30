@@ -53,10 +53,6 @@ const getAllPolls = async (req, res) => {
         { new: true }
       );
   
-      if (!poll) {
-        return res.status(404).send({ message: 'Poll not found' });
-      }
-  
       await User.findByIdAndUpdate(
         res.locals.user._id,
         { $push: { followingPolls: req.params.pollname } }
