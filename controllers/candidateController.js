@@ -34,8 +34,10 @@ const followCandidate = async (req, res) => {
     candidate.followers.push({ userId, city: userCity });
     await candidate.save();
 
-    user.followingCandidate.push(candidate.username);
-    await user.save();
+    await User.findByIdAndUpdate(
+      userId,
+      { $push: { followingCandidate: candidate.username } }
+    );
 
     res.status(200).redirect(`/anket-sonuclari?success=true`);
   } catch (error) {
