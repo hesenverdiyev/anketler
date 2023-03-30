@@ -30,10 +30,6 @@ const userSchema = new Schema(
           "En az 4 karakter giriniz"
         ]
       },
-      followers: {
-        type: [String],
-        default: []
-      },
       followingCandidate: {
         type: [String],
         validate: [
