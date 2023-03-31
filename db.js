@@ -7,7 +7,7 @@ const conn = async () =>{
             authSource: "admin",
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            connectTimeoutMS: 5000,
+            connectTimeoutMS: 30000,
             socketTimeoutMS: 20000,
             heartbeatFrequencyMS: 10000,
             serverSelectionTimeoutMS: 5000,
