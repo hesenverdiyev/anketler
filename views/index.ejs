@@ -66,12 +66,11 @@
 	<!-- header -->
 	<%- include("partials/_menu") %>
 		<!-- end header inner -->
-		<!-- about -->
+		
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-2 bg-light">
 					<div class="sidebar-left" id="sidebar-left">
-					  <!-- add content to your left sidebar here -->
 					  <a href="https://www.youtube.com/watch?v=hw1BBtUkdzA">
 					  <img src="/images/vertical-banner.gif" alt="Vertical Banner" >
 					</a>
@@ -234,7 +233,6 @@
 				</div>
 				<div class="col-md-2 bg-light">
 					<div class="sidebar-right" id="sidebar-right">
-					  <!-- add content to your right sidebar here -->
 					  <% if (!user) { %>
 					  <a href="/register">
 						<% } else { %>
@@ -277,6 +275,5 @@ var x = setInterval(function() {
   }
 }, 1000);
       </script>
-		<!-- end about -->
 		<!-- end footer -->
 		<%- include("partials/_footer") %>
