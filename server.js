@@ -53,6 +53,14 @@ app.use(fileUpload({
 app.use(methodOverride('_method', {
     methods: ['POST','GET'],
 }));
+app.enable('trust proxy');
+app.use((req, res, next) => {
+  if (!req.secure) {
+    res.redirect(`https://${req.headers.host}${req.url}`);
+  } else {
+    next();
+  }
+});
 
 //routes
 app.use('*', checkUser);
