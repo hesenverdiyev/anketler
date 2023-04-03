@@ -12,6 +12,7 @@ import session from 'express-session';
 import { checkUser } from "./middlewares/authMiddleware.js";
 import fileUpload from 'express-fileupload';
 import { v2 as cloudinary } from 'cloudinary';
+import secure from 'express-force-https'; // import the HTTPS middleware
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.set('view engine', 'ejs');
 
 
 //static files middleware
+app.use(secure); // add the HTTPS middleware
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -53,14 +55,6 @@ app.use(fileUpload({
 app.use(methodOverride('_method', {
     methods: ['POST','GET'],
 }));
-app.enable('trust proxy');
-app.use((req, res, next) => {
-  if (!req.secure) {
-    res.redirect(`https://${req.headers.host}${req.url}`);
-  } else {
-    next();
-  }
-});
 
 //routes
 app.use('*', checkUser);
