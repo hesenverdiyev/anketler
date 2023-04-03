@@ -12,7 +12,6 @@ import session from 'express-session';
 import { checkUser } from "./middlewares/authMiddleware.js";
 import fileUpload from 'express-fileupload';
 import { v2 as cloudinary } from 'cloudinary';
-import secure from 'express-force-https'; // import the HTTPS middleware
 
 dotenv.config();
 
@@ -33,7 +32,6 @@ app.set('view engine', 'ejs');
 
 
 //static files middleware
-app.use(secure); // add the HTTPS middleware
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
