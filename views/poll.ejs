@@ -33,6 +33,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css"> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQRNLE9FMX"></script>
 <script>
@@ -273,11 +274,17 @@ border-bottom: 1px solid rgba(0,0,0,.125);
   const data = await response.json();
 
   if (response.ok) {
-    alert(data.message);
+    Swal.fire({
+      title: data.message,
+      icon: 'success'
+    });
     document.getElementById('resultsplace').style.display = 'block';
     // Do something with the updated poll object, e.g. display a message
   } else {
-    alert(data.message);
+    Swal.fire({
+      title: data.message,
+      icon: 'error'
+    });
     // Handle error
   }
 } catch (error) {
