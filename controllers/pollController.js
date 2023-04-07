@@ -21,9 +21,9 @@ const getAllPolls = async (req, res) => {
     try {
       const polls = await Poll.find({});
 
-      const pollname = req.params.pollname;
-      const poll = await Poll.findOne({ pollname: pollname });
-      const { _id, pollquestion, options } = poll;
+      let pollname = req.params.pollname;
+      let poll = await Poll.findOne({ pollname: pollname });
+      let { _id, pollquestion, options } = poll;
   
       req.session.returnTo = `/polls/${pollname}`
 
@@ -46,8 +46,8 @@ const getAllPolls = async (req, res) => {
       if (user.followingPolls.includes(req.params.pollname)) {
         return res.status(400).send({ message: 'Bu anketde daha önce oy kullandınız' });
       }
-  
-      const poll = await Poll.findOneAndUpdate(
+
+      let poll = await Poll.findOneAndUpdate(
         { pollname: req.params.pollname, 'options.title': req.body.optiontitle },
         { $addToSet: { 'options.$.voters': { userId: res.locals.user._id } } },
         { new: true }
@@ -65,11 +65,6 @@ const getAllPolls = async (req, res) => {
     }
   };
   
-  
-  
-  
-
-
   export {
     getAllPolls,
     getAPoll,
