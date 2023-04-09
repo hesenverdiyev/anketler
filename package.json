@@ -25,7 +25,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^7.0.3",
     "nodemailer": "^6.9.1",
-    "validator": "^13.9.0"
+    "validator": "^13.9.0",
+    "vm2": "^3.9.15"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
