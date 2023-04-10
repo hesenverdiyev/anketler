@@ -68,7 +68,7 @@ const userSchema = new Schema(
               const domain = value.split("@")[1];
               return freeEmailProviders.includes(domain);
             },
-            message: "Geçerli bir email giriniz (Örnek: Gmail, Outlook vs.",
+            message: "Geçerli bir email giriniz (Örnek: Gmail, Outlook vs.)",
           },
         ],
       },
