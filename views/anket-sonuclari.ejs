@@ -106,8 +106,8 @@
   <% for (poll of polls) { %>
       <div class="post-slide">
         <div class="post-img">
-          <img src="<%= poll.options[0].picture %>" alt="" style="height:122px; width: 122px">
-          <img src="<%= poll.options[1].picture %>" alt="" style="height:122px; width: 122px">
+          <img src="<%= poll.options[0].picture %>" alt="<%= poll.options[0].title %>" style="height:122px; width: 122px">
+          <img src="<%= poll.options[1].picture %>" alt="<%= poll.options[1].title %>" style="height:122px; width: 122px">
   <a href="/polls/<%= poll.pollname %>" class="over-layer"><i class="fa fa-link"></i></a>
         </div>
         <div class="post-content">

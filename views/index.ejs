@@ -95,7 +95,7 @@
 						<div class="col-md-6">
 							<div class="card-deck mt-5 ml-3 mr-3">
 								<div class="card">
-									<img class="card-img-top" src="/images/rte.jpg" alt="Card image cap"
+									<img class="card-img-top" src="/images/rte.jpg" alt="Recep Tayyip Erdoğan"
 										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
 									<h6 class="card-title" style="margin-top:10px;"><b>R.T. Erdoğan</b>
 										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Cumhur İttifakı</small></p>
@@ -116,7 +116,7 @@
                                  <% } %>
 								</div>
 								<div class="card">
-									<img class="card-img-top" src="/images/mince.jpg" alt="Card image cap"
+									<img class="card-img-top" src="/images/mince.jpg" alt="Muharrem İnce"
 										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
 									<h6 class="card-title" style="margin-top:10px;"><b>Muharrem İnce</b>
 										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Memleket
@@ -142,7 +142,7 @@
 							<div class="col-md-6">
 								<div class="card-deck mt-5 ml-3 mr-3">
 									<div class="card">
-										<img class="card-img-top" src="/images/kkilicdaroglu.jpg" alt="Card image cap"
+										<img class="card-img-top" src="/images/kkilicdaroglu.jpg" alt="Kemal Kılıçdaroğlu"
 											style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
 										<h6 class="card-title" style="margin-top:10px;"><b>Kemal Kılıçdaroğlu</b>
 											<p class="card-text" style="margin-top:5px;"><small
@@ -164,7 +164,7 @@
 												</div>
 								
 								<div class="card">
-									<img class="card-img-top" src="/images/sOgan.jpg" alt="Card image cap"
+									<img class="card-img-top" src="/images/sOgan.jpg" alt="Sinan Oğan"
 										style=" height: 170px; width: 155px; margin-left: auto; margin-right: auto;">
 									<h6 class="card-title" style="margin-top:10px;"><b>Sinan Oğan</b>
 										<p class="card-text" style="margin-top:5px;"><small class="text-muted">Ata İttifakı</small></p>
@@ -211,8 +211,8 @@
         <% for (poll of polls) { %>
             <div class="post-slide">
               <div class="post-img">
-                <img src="<%= poll.options[0].picture %>" alt="" style="height:122px; width: 122px">
-                <img src="<%= poll.options[1].picture %>" alt="" style="height:122px; width: 122px">
+                <img src="<%= poll.options[0].picture %>" alt="<%= poll.options[0].title %>" style="height:122px; width: 122px">
+                <img src="<%= poll.options[1].picture %>" alt="<%= poll.options[1].title %>" style="height:122px; width: 122px">
 				<a href="/polls/<%= poll.pollname %>" class="over-layer"><i class="fa fa-link"></i></a>
               </div>
               <div class="post-content">
