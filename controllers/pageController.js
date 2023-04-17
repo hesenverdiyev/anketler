@@ -95,15 +95,21 @@ const getIlAnketSonucuPage = async (req, res) => {
 };
 
 const getRegisterPage = (req, res) => {
+  if (res.locals.user) {
+    return res.redirect('/');
+  } else {
   res.render('register', {
     link: 'register',
-  });
+  });}
 };
 
 const getLoginPage = (req, res) => {
+  if (res.locals.user) {
+    return res.redirect('/');
+  } else{
   res.render('login', {
     link: 'login',
-  });
+  })}
 };
 
 const getLogout = (req, res) => {
