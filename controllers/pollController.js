@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import User from '../models/userModel.js';
 import Poll from '../models/pollModel.js';
+import Comment from '../models/commentModel.js';
 
 const getAllPolls = async (req, res) => {  
     try {
@@ -64,9 +65,14 @@ const getAllPolls = async (req, res) => {
       return res.status(500).send({ message: 'Internal server error' });
     }
   };
+
+  const pollCommenting = async (req, res) => {
+
+  }
   
   export {
     getAllPolls,
     getAPoll,
-    pollVoting
+    pollVoting,
+    pollCommenting
   }; 

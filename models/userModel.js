@@ -66,9 +66,10 @@ const userSchema = new Schema(
           {
             validator: (value) => {
               const domain = value.split("@")[1];
-              return freeEmailProviders.includes(domain);
+              const local = value.split("@")[0];
+              return freeEmailProviders.includes(domain) && !local.includes("+");
             },
-            message: "Geçerli bir email giriniz (Örnek: Gmail, Outlook vs.)",
+            message: "Geçerli bir email giriniz (Örnek: Gmail, Outlook vs.) ve artı (+) işareti kullanmayınız",
           },
         ],
       },
