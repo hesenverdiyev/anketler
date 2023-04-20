@@ -200,32 +200,38 @@ border-bottom: 1px solid rgba(0,0,0,.125);
            <div class="container my-5">
             <h2>Yorum Yaz</h2>
             <form>
-              <div class="col-md-4">
+              <div class="col-md-5">
               <div class="form-group">
                 <label for="name">İsim:</label>
                 
-                <input type="text" class="form-control" id="name" placeholder="İsminiz" required>
+                <input type="text" class="form-control" id="commentername" placeholder="İsminiz" required>
               </div>
               <div class="form-group">
                 <label for="comment">Yorum:</label>
-                <textarea class="form-control" id="comment" rows="3" placeholder="Yorumunuz" required></textarea>
+                <textarea class="form-control" id="commenttext" rows="3" placeholder="Yorumunuz" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Gönder</button>
+              <input id="submitCommentButton" style="width: 80px; height: 45px;" type="submit" value="Gönder" />
             </form>
           </div>
           
         <hr>
+        
         <div id="comments" class="my-5">
-          <div class="my-3 p-3 bg-light rounded comment-container">
-            <div class="initial-circle" style="margin-top: -15px;">E</div>
-            <div class="media-body">
-              <h6 class="mt-0 mb-1">Elşən
-              <small class="text-muted">4/18/2023, 5:37:50 PM</small></h6>
-              <p class="comment-text">Mənim oğlumun adı Röyaldı</p>
+          <% for (let i = 0; i < comments.length; i++) { %>
+            <div class="my-3 p-3 bg-light rounded comment-container">
+              <div class="initial-circle" style="margin-top: -15px;"><%= comments[i].commenterName.charAt(0).toUpperCase() %></div>
+              <div class="media-body">
+                <h6 class="mt-0 mb-1"><%= comments[i].commenterName %>
+                  <small class="text-muted"><%= new Date(comments[i].commentDate).toLocaleString('tr-TR', { hour12: false, timeZone: 'Europe/Istanbul' }) %></small>
+                </h6>
+                <p class="comment-text"><%= comments[i].commentText %></p>
+              </div>
+              <button class="btn btn-danger my-2 delete-button" id="deletecommentbutton" value="<%= comments[i].commenterId %>">Yorumu sil</button>
             </div>
-            <button class="btn btn-danger my-2 delete-button" >Delete</button>
-          </div>
+            
+          <% } %>
         </div>
+        
 
            <div class="col-md-12" style="background-color: #f2f2f2; padding: 10px; text-align: center; margin-top: 80px; margin-left: auto; margin-right: auto;">
             <h2 style="font-size: 24px;"><strong><em style="color: #424242;">Diğer anketler</em></strong></h2>
@@ -349,6 +355,28 @@ border-bottom: 1px solid rgba(0,0,0,.125);
     })
   </script>
   <script>
+const commentForm = document.querySelector('form');
+const commenterName = document.getElementById('commentername').value;
+const commentText = document.getElementById('commenttext').value;
+                
+commentForm.addEventListener('submit', async (event) => {
+  
+  
+  const commenterName = document.getElementById('commentername').value;
+  const commentText = document.getElementById('commenttext').value;
+  
+  try {
+    const response = await fetch('/polls/<%= pollname %>/comment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ commenterName, commentText }),
+    });
+    
+  } catch (error) {
+    console.error(error);
+    alert('Hatalı');
+  }
+});
 
   </script>
 

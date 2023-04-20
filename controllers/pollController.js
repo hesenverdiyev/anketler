@@ -21,25 +21,29 @@ const getAllPolls = async (req, res) => {
   const getAPoll = async (req, res) => {
     try {
       const polls = await Poll.find({});
-
       let pollname = req.params.pollname;
+  
+      const comments = await Comment.find({ pageFrom: pollname })
+        .sort({ commentDate: 'desc' }); // Sort by commentDate field in descending order
+  
       let poll = await Poll.findOne({ pollname: pollname });
       let { _id, pollquestion, options } = poll;
   
-      req.session.returnTo = `/polls/${pollname}`
-
+      req.session.returnTo = `/polls/${pollname}`;
+  
       const results = options.map(option => ({
         title: option.title,
         picture: option.picture,
         votes: option.voters.length,
       })).sort((a, b) => b.votes - a.votes);
   
-      res.render('poll', { polls, poll, pollname, options, pollquestion, _id, results, link: 'poll' });
+      res.render('poll', { polls, poll, pollname, options, pollquestion, _id, results, comments, link: 'poll' });
     } catch (err) {
       console.error(err);
       res.status(500).send('Anket sonuçları alınırken bir hata oluştu');
     }
   };
+   
 
   const pollVoting = async (req, res) => {
     try {
@@ -67,9 +71,26 @@ const getAllPolls = async (req, res) => {
   };
 
   const pollCommenting = async (req, res) => {
-
-  }
+    try {
+      const pageFrom = req.params.pollname;
+      
+      const commenterId = res.locals.user._id;
+      const { commenterName, commentText } = req.body;
   
+      const comment = await Comment.create({
+        pageFrom,
+        commenterId,
+        commenterName,
+        commentText
+      });
+  
+      res.status(201).json(comment);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
+
   export {
     getAllPolls,
     getAPoll,
