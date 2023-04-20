@@ -20,6 +20,8 @@ const getAllPolls = async (req, res) => {
 
   const getAPoll = async (req, res) => {
     try {
+      const userId = res.locals.user ? res.locals.user.id : null;
+
       const polls = await Poll.find({});
       let pollname = req.params.pollname;
   
@@ -37,7 +39,7 @@ const getAllPolls = async (req, res) => {
         votes: option.voters.length,
       })).sort((a, b) => b.votes - a.votes);
   
-      res.render('poll', { polls, poll, pollname, options, pollquestion, _id, results, comments, link: 'poll' });
+      res.render('poll', { polls, poll, pollname, options, pollquestion, _id, results, comments, userId, link: 'poll' });
     } catch (err) {
       console.error(err);
       res.status(500).send('Anket sonuçları alınırken bir hata oluştu');
