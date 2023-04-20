@@ -8,6 +8,7 @@ import userRoute from "./routes/userRoute.js";
 import candidateRoute from "./routes/candidateRoute.js";
 import facebookRoute from "./routes/facebookRoute.js";
 import pollRoute from "./routes/pollRoute.js";
+import commentRoute from "./routes/commentRoute.js";
 import session from 'express-session';
 import { checkUser } from "./middlewares/authMiddleware.js";
 import fileUpload from 'express-fileupload';
@@ -60,6 +61,7 @@ app.use("/", pageRoute);
 app.use("/users", userRoute);
 app.use("/candidates", candidateRoute);
 app.use("/polls", pollRoute);
+app.use("/comments", commentRoute);
 app.use("/srv/service/social/Facebook/callback/", facebookRoute);
 
 // 404 error handling middleware

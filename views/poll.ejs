@@ -381,6 +381,19 @@ commentForm.addEventListener('submit', async (event) => {
 });
 
   </script>
+  <script>
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+deleteButtons.forEach((button) => {
+  button.addEventListener('click', async (event) => {
+    const commentId = event.target.dataset.commentId;
+    const response = await fetch(`/comments/${commentId}`, { method: 'DELETE' });
+    if (response.ok) {
+      event.target.closest('.comment-container').remove();
+    }
+  });
+});
+  </script>
 
 		<!-- end about -->
 		<!-- end footer -->
