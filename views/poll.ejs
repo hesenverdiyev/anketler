@@ -195,10 +195,10 @@ border-bottom: 1px solid rgba(0,0,0,.125);
             <p>Toplam oy sayısı : <%= totalVotes %></p>
            </div>
 
-<hr>
+<hr style="margin-top: 80px;">
 
-           <div class="container my-5">
-            <h2>Yorum Yaz</h2>
+           <div class="container my-5" style="margin-top: 0px !important;">
+            <h2 style="margin-bottom: 15px;">Yorumlar</h2>
             <form>
               <div class="col-md-5">
               <div class="form-group">
@@ -210,30 +210,36 @@ border-bottom: 1px solid rgba(0,0,0,.125);
                 <label for="comment">Yorum:</label>
                 <textarea class="form-control" id="commenttext" rows="3" placeholder="Yorumunuz" required></textarea>
               </div>
-              <input id="submitCommentButton" style="width: 80px; height: 45px;" type="submit" value="Gönder" />
+              <% if (user) { %>
+              <input id="submitCommentButton" style="width: 80px; height: 45px;" type="submit" value="Yorum yaz" disabled/>
+              <% } else { %>
+                <a href="/register" class="btn btn-warning">Kayıt ol - Yorum yaz</a>
+                <% } %>
             </form>
           </div>
           
         <hr>
         
         <div id="comments" class="my-5">
-    <% for (let i = 0; i < comments.length; i++) { %>
-        <div class="my-3 p-3 bg-light rounded comment-container">
-            <div class="initial-circle" style="margin-top: -15px;"><%= comments[i].commenterName.charAt(0).toUpperCase() %></div>
-            <div class="media-body">
-                <h6 class="mt-0 mb-1"><%= comments[i].commenterName %>
-                    <small class="text-muted"><%= new Date(comments[i].commentDate).toLocaleString('tr-TR', { hour12: false, timeZone: 'Europe/Istanbul' }) %></small>
-                </h6>
-                <p class="comment-text"><%= comments[i].commentText %></p>
-            </div>
-            <% if (userId && comments[i].commenterId.toString() === userId.toString() ) { %>
-                <button class="btn btn-danger my-2 delete-button" id="deletecommentbutton" value="<%= comments[i].commenterId %>" data-comment-id="<%= comments[i]._id %>">Yorumu sil</button>
-            <% } %>
-        </div> 
-    <% } %>
-</div>
-
-        
+          <% if (comments.length === 0) { %>
+              <p style="text-align: center;">Yorum yok, ilk yorumu sen yap</p>
+          <% } else { %>
+              <% for (let i = 0; i < comments.length; i++) { %>
+                  <div class="my-3 p-3 bg-light rounded comment-container">
+                      <div class="initial-circle" style="margin-top: -15px;"><%= comments[i].commenterName.charAt(0).toUpperCase() %></div>
+                      <div class="media-body">
+                          <h6 class="mt-0 mb-1"><%= comments[i].commenterName %>
+                              <small class="text-muted"><%= new Date(comments[i].commentDate).toLocaleString('tr-TR', { hour12: false, timeZone: 'Europe/Istanbul' }) %></small>
+                          </h6>
+                          <p class="comment-text"><%= comments[i].commentText %></p>
+                      </div>
+                      <% if (userId && comments[i].commenterId.toString() === userId.toString() ) { %>
+                          <button class="btn btn-danger my-2 delete-button" id="deletecommentbutton" value="<%= comments[i].commenterId %>" data-comment-id="<%= comments[i]._id %>">Yorumu sil</button>
+                      <% } %>
+                  </div> 
+              <% } %>
+          <% } %>
+      </div>
 
            <div class="col-md-12" style="background-color: #f2f2f2; padding: 10px; text-align: center; margin-top: 80px; margin-left: auto; margin-right: auto;">
             <h2 style="font-size: 24px;"><strong><em style="color: #424242;">Diğer anketler</em></strong></h2>
@@ -393,6 +399,23 @@ deleteButtons.forEach((button) => {
     }
   });
 });
+  </script>
+  <script>
+    const commenterNameInput = document.getElementById('commentername');
+const commentTextInput = document.getElementById('commenttext');
+const submitCommentButton = document.getElementById('submitCommentButton');
+
+commenterNameInput.addEventListener('input', toggleSubmitButton);
+commentTextInput.addEventListener('input', toggleSubmitButton);
+
+function toggleSubmitButton() {
+  if (commenterNameInput.value.trim() !== '' && commentTextInput.value.trim() !== '') {
+    submitCommentButton.disabled = false;
+  } else {
+    submitCommentButton.disabled = true;
+  }
+}
+
   </script>
 
 		<!-- end about -->
