@@ -100,6 +100,9 @@ border-bottom: 1px solid rgba(0,0,0,.125);
     .delete-button {
       margin-left: auto;
     }
+    .comments-container > .comment-container:nth-child(n+11) {
+  display: none;
+}
 	</style>
 </head>
 <!-- body -->
@@ -222,24 +225,31 @@ border-bottom: 1px solid rgba(0,0,0,.125);
         
         <div id="comments" class="my-5">
           <% if (comments.length === 0) { %>
-              <p style="text-align: center;">Yorum yok, ilk yorumu sen yap</p>
+            <p style="text-align: center;">Yorum yok, ilk yorumu sen yap</p>
           <% } else { %>
+            <div class="comments-container">
               <% for (let i = 0; i < comments.length; i++) { %>
-                  <div class="my-3 p-3 bg-light rounded comment-container">
-                      <div class="initial-circle" style="margin-top: -15px;"><%= comments[i].commenterName.charAt(0).toUpperCase() %></div>
-                      <div class="media-body">
-                          <h6 class="mt-0 mb-1"><%= comments[i].commenterName %>
-                              <small class="text-muted"><%= new Date(comments[i].commentDate).toLocaleString('tr-TR', { hour12: false, timeZone: 'Europe/Istanbul' }) %></small>
-                          </h6>
-                          <p class="comment-text"><%= comments[i].commentText %></p>
-                      </div>
-                      <% if (userId && comments[i].commenterId.toString() === userId.toString() ) { %>
-                          <button class="btn btn-danger my-2 delete-button" id="deletecommentbutton" value="<%= comments[i].commenterId %>" data-comment-id="<%= comments[i]._id %>">Yorumu sil</button>
-                      <% } %>
-                  </div> 
+                <div class="my-3 p-3 bg-light rounded comment-container">
+                  <div class="initial-circle" style="margin-top: -15px;"><%= comments[i].commenterName.charAt(0).toUpperCase() %></div>
+                  <div class="media-body">
+                    <h6 class="mt-0 mb-1"><%= comments[i].commenterName %>
+                      <small class="text-muted"><%= new Date(comments[i].commentDate).toLocaleString('tr-TR', { hour12: false, timeZone: 'Europe/Istanbul' }) %></small>
+                    </h6>
+                    <p class="comment-text"><%= comments[i].commentText %></p>
+                  </div>
+                  <% if (userId && comments[i].commenterId.toString() === userId.toString() ) { %>
+                    <button class="btn btn-danger my-2 delete-button" id="deletecommentbutton" value="<%= comments[i].commenterId %>" data-comment-id="<%= comments[i]._id %>">Yorumu sil</button>
+                  <% } %>
+                </div> 
               <% } %>
+            </div>
+            <% if (comments.length > 10) { %>
+              <div style="text-align: center;">
+                <button id="show-more-btn" class="btn btn-link"><u>Tüm yorumları göster</u></button>
+              </div>
+            <% } %>
           <% } %>
-      </div>
+        </div>
 
            <div class="col-md-12" style="background-color: #f2f2f2; padding: 10px; text-align: center; margin-top: 80px; margin-left: auto; margin-right: auto;">
             <h2 style="font-size: 24px;"><strong><em style="color: #424242;">Diğer anketler</em></strong></h2>
@@ -414,6 +424,17 @@ function toggleSubmitButton() {
   } else {
     submitCommentButton.disabled = true;
   }
+}
+  </script>
+  <script>
+const showMoreBtn = document.querySelector('#show-more-btn');
+if (showMoreBtn) {
+  showMoreBtn.addEventListener('click', () => {
+    document.querySelectorAll('.comments-container > .comment-container').forEach(comment => {
+      comment.style.display = 'flex';
+    });
+    showMoreBtn.style.display = 'none';
+  });
 }
 
   </script>
