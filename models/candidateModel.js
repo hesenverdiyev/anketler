@@ -18,7 +18,7 @@ const candidateSchema = new Schema({
         userId: {
           type: Schema.Types.ObjectId,
           ref: 'User',
-          required: true
+          required: false
         },
         city: {
           type: String,
