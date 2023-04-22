@@ -48,11 +48,7 @@ const userSchema = new Schema(
     {
       cityfrom: {
         type: String,
-        required: false,
-        validate: {
-          validator: (value) => validator.isAlpha(value, 'en-US', {ignore: ' ,'}),
-          message: 'City name can only contain letters, spaces, and commas'
-        }
+        required: false
       },
       email: {
         type: String,
