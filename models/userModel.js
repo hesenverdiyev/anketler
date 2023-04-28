@@ -5,7 +5,6 @@ import validator from 'validator';
 const { Schema} = mongoose;
 
 const freeEmailProviders = [
-'edu.tr',
 'gmail.com',
 'googlemail.com',
 'outlook.com',
@@ -41,6 +40,9 @@ const freeEmailProviders = [
 'tutamail.com',
 'web.de',
 't-online.de',
+'me.com',
+'mac.com',
+'icloud.com',
 '1und1.de'
 ];
 
