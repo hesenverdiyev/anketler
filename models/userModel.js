@@ -40,9 +40,6 @@ const freeEmailProviders = [
 'tutamail.com',
 'web.de',
 't-online.de',
-'me.com',
-'mac.com',
-'icloud.com',
 '1und1.de'
 ];
 
