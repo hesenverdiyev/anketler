@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from "dotenv";
 import conn from "./db.js";
+import { fork } from 'child_process';
 import cookieParser from 'cookie-parser';
 import methodOverride from "method-override";
 import pageRoute from "./routes/pageRoute.js";
@@ -67,6 +68,14 @@ app.use("/srv/service/social/Facebook/callback/", facebookRoute);
 // 404 error handling middleware
 app.use((req, res, next) => {
     res.status(404).render('404.ejs');
+});
+
+
+// Start the bot.js process
+const botProcess = fork('./bot.js');
+
+botProcess.on('message', (message) => {
+  console.log('Message from bot.js:', message);
 });
 
 //server listening
