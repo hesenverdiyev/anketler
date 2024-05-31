@@ -47,6 +47,6 @@ const sendWords = () => {
 };
 
 // Schedule the job to send words every 8 hours
-const job = schedule.scheduleJob('0 */1 * * *', sendWords);
+const job = schedule.scheduleJob('0 */8 * * *', sendWords);
 
 console.log('Bot is running...');
