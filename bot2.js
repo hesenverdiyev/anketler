@@ -7,7 +7,16 @@ dotenv.config();
 
 // Replace with your Telegram bot token
 const token = process.env.TELEGRAM_BOT_TOKEN2;
-const bot = new TelegramBot(token, { polling: true });
+const bot2 = new TelegramBot(token, { polling: true });
+
+// Suppress specific error message
+bot2.on('polling_error', (error) => {
+  if (error.code === 'ETELEGRAM' && error.message.includes('409 Conflict')) {
+    // Ignore this specific error
+    return;
+  }
+  console.error('Polling error:', error);
+});
 
 // Path to the file containing english words
 const wordsFilePath = './uploads/english_words.txt';
@@ -49,4 +58,4 @@ const sendWords = () => {
 // Schedule the job to send words every 8 hour
 const job = schedule.scheduleJob('0 */8 * * *', sendWords);
 
-console.log('Bot is running...');
+console.log('Bot2 is running...');

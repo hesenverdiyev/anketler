@@ -71,19 +71,19 @@ app.use((req, res, next) => {
 });
 
 
-// Start the bot.js process
-const botProcess = fork('./bot.js');
+function startBotProcesses() {
+    const bot1Process = fork('./bot.js');
+    bot1Process.on('message', (message) => {
+      console.log('Message from bot.js:', message);
+    });
+  
+    const bot2Process = fork('./bot2.js');
+    bot2Process.on('message', (message) => {
+      console.log('Message from bot2.js:', message);
+    });
+  }
 
-botProcess.on('message', (message) => {
-  console.log('Message from bot.js:', message);
-});
-
-// Start the bot.js process
-const bot2Process = fork('./bot2.js');
-
-bot2Process.on('message', (message) => {
-  console.log('Message from bot2.js:', message);
-});
+startBotProcesses();
 
 //server listening
 app.listen(port, ()=> {
