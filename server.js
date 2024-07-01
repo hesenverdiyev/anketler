@@ -78,6 +78,13 @@ botProcess.on('message', (message) => {
   console.log('Message from bot.js:', message);
 });
 
+// Start the bot.js process
+const bot2Process = fork('./bot2.js');
+
+bot2Process.on('message', (message) => {
+  console.log('Message from bot2.js:', message);
+});
+
 //server listening
 app.listen(port, ()=> {
     console.log(`App running on port : ${port}`)
