@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "./server.js", "use": "@vercel/node" },
-    { "src": "./db.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/" },
-    { "src": "/users", "dest": "/users" },
-    { "src": "/candidates", "dest": "/candidates" },
-    { "src": "/polls", "dest": "/polls" },
-    { "src": "/comments", "dest": "/comments" },
-    { "src": "/srv/service/social/Facebook/callback/", "dest": "/srv/service/social/Facebook/callback/" }
-  ]
+  "builds": [{ "src": "./server.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/server.js" }]
 }
